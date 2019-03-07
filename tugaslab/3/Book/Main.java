@@ -14,3 +14,4 @@ public class Main{
         System.out.println(penulis1.getGender()=='m' ? "Gender \t: male" : "Gender \t: female");
     }
 }
+//fr
