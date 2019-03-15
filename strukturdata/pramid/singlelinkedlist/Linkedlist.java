@@ -46,6 +46,16 @@ class LinkedList{
         Node printNode = head;
         while (printNode != null){
             printNode.show();
+            if (printNode == tail && isCircular()) {
+                System.out.print("->");
+                printNode.next.show();
+                System.out.print("list is circular");
+                return;
+            } else if(printNode == tail){
+                System.out.print("->"+printNode.next);
+                System.out.print(" (list is not circular)");
+                return;
+            }
             printNode=printNode.next;
         }
         System.out.println();
@@ -100,31 +110,37 @@ class LinkedList{
         Node pivot = head;
         Node current = pivot.next;
         int index = 1;
+        int pivotIndex = 1;
+        //int shifted = 0;
         if(isEmpty()){
             return;
         }
         while (pivot != null) {
             //System.out.println(pivot.data);
             while(current!=null){
-                // System.out.println(current.data == pivot.data);
+                //System.out.println(current.data == pivot.data);
                 index++;
-                // System.out.println(index);
                 if (current.data == pivot.data) {
                     index--;
+                    //shifted--;
                     delIndex(index);
+                    //print();
                 }
                 if (current.next == null) {
                     index--;
-                    return;
+                    shifted--;
                 }
+                //System.out.println("current index"+index);
+                //System.out.println("current pivot index"+pivotIndex);
                 current = current.next;
-                //System.out.println(index);
             }
-            // System.out.println("----- end of last pivot ");
-            // System.out.println("index from last: "+index);
             if(pivot.next != null){
                 pivot = pivot.next;
                 current = pivot.next;
+                pivotIndex++;
+                index = pivotIndex;
+            } else {
+                return;
             }
         }
     }
