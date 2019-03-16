@@ -42,6 +42,11 @@ class LinkedList{
         nodebaru.next = current.next;
         current.next = nodebaru;
     }
+    public void print2(){
+        for (Node x = head; x != null; x = x.next) {
+            x.show();
+        }
+    }
     public void print(){
         Node printNode = head;
         while (printNode != null){
@@ -128,7 +133,7 @@ class LinkedList{
                 }
                 if (current.next == null) {
                     index--;
-                    shifted--;
+                    //shifted--;
                 }
                 //System.out.println("current index"+index);
                 //System.out.println("current pivot index"+pivotIndex);
