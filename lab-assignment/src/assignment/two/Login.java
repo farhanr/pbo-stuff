@@ -1,5 +1,7 @@
 package assignment.two;
 
+import java.util.NoSuchElementException;
+
 class Login {
     static Login instance = null;
     private User user;
@@ -16,16 +18,17 @@ class Login {
         return instance;
     }
 
-    public void auth(String name, String pass) {
+    public void auth(String name, String pass) throws NoSuchElementException {
         dataSource = DataSource.getInstance();
-        if ((user = dataSource.getUser(name)) != null) {
+        try {
+            user = dataSource.getUser(name);
             if (user.getPassword().equals(pass)) {
                 userDetail = user.getUserDeteail();
             } else {
                 System.out.println("wrong password");
             }
-        } else {
-            System.out.println("user not found");
+        } catch (Exception e) {
+            throw new NoSuchElementException("user not found: " + name);
         }
     }
 
