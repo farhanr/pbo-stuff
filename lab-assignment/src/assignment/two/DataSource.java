@@ -1,4 +1,4 @@
-package app.assignment.two;
+package assignment.two;
 
 import java.util.HashMap;
 import java.util.ArrayList;
@@ -6,8 +6,8 @@ import java.util.Arrays;
 import java.io.*;
 
 class DataSource {
-    private HashMap<String, User> userMap;
-    private HashMap<Integer, UserDetail> userDetailMap;
+    private HashMap<String, User> userMap = new HashMap<>();
+    private HashMap<Integer, UserDetail> userDetailMap = new HashMap<>();
 
     DataSource() {
         putUserDetail();
@@ -17,7 +17,7 @@ class DataSource {
     private void putUserDetail() {
         BufferedReader reader = null;
         try {
-            reader = new BufferedReader(new FileReader("file/userdetail.txt"));
+            reader = new BufferedReader(new FileReader("src/userdetail.txt"));
             String s;
             while ((s = reader.readLine()) != null) {
                 ArrayList<String> sList = new ArrayList<String>(Arrays.asList(s.split(";")));
@@ -41,7 +41,7 @@ class DataSource {
     private void putUser() {
         BufferedReader reader = null;
         try {
-            reader = new BufferedReader(new FileReader("file/user.txt"));
+            reader = new BufferedReader(new FileReader("src/user.txt"));
             String s;
             while ((s = reader.readLine()) != null) {
                 ArrayList<String> sList = new ArrayList<String>(Arrays.asList(s.split(";")));

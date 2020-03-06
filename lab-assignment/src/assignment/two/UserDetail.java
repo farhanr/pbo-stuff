@@ -1,4 +1,4 @@
-package app.assignment.two;
+package assignment.two;
 
 public class UserDetail {
     private Integer id;
