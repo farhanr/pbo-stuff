@@ -1,12 +1,23 @@
 package assignment.two;
 
 class Login {
+    static Login instance = null;
     private User user;
     private UserDetail userDetail;
     private DataSource dataSource;
 
+    private Login() {
+
+    }
+
+    static public Login getInstance() {
+        if (instance == null)
+            instance = new Login();
+        return instance;
+    }
+
     public void auth(String name, String pass) {
-        dataSource = new DataSource();
+        dataSource = DataSource.getInstance();
         if ((user = dataSource.getUser(name)) != null) {
             if (user.getPassword().equals(pass)) {
                 userDetail = user.getUserDeteail();

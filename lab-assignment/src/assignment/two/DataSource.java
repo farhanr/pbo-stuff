@@ -6,12 +6,19 @@ import java.util.Arrays;
 import java.io.*;
 
 class DataSource {
+    static DataSource instance = null;
     private HashMap<String, User> userMap = new HashMap<>();
     private HashMap<Integer, UserDetail> userDetailMap = new HashMap<>();
 
-    DataSource() {
+    private DataSource() {
         putUserDetail();
         putUser();
+    }
+
+    static public DataSource getInstance() {
+        if (instance == null)
+            instance = new DataSource();
+        return instance;
     }
 
     private void putUserDetail() {
